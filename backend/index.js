@@ -15,12 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 const __dirname = path.resolve();
 
-// app.get("/",(req,res)=>{
-//     return res.status(200).json({
-//         message:"i,m coming from backend",
-//         success:true
-//     })
-// })
+
 
 app.use(express.json());
 app.use(cookieParser());
@@ -38,12 +33,6 @@ app.use(cors(corsOptions));
 
 // API Routes
 app.use("/api/all",allRoute );
-
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
-app.get('/*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
-});
-
 
 app.listen(PORT, () => {
   connectDB();
