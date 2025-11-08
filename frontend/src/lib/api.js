@@ -1,5 +1,6 @@
-const BASE_URL =
-  import.meta.env.VITE_BACKEND_URL || "http://localhost:8000/api/all";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000/api/all";
+// Remove trailing slash if present
+const apiUrl = BASE_URL.endsWith('/') ? BASE_URL.slice(0, -1) : BASE_URL;
 
 // Helper function to handle API responses
 const handleResponse = async (response) => {
@@ -16,7 +17,7 @@ const handleResponse = async (response) => {
 // API Functions
 export const fetchProducts = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/`, {
+    const response = await fetch(apiUrl, {
       headers: {
         Accept: "application/json",
       },
@@ -34,7 +35,7 @@ export const fetchProducts = async () => {
 
 export const fetchCart = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/ci`);
+    const response = await fetch(`${apiUrl}/ci`);
     return handleResponse(response);
   } catch (error) {
     console.error("Error fetching cart:", error);
@@ -51,7 +52,7 @@ export const addToCart = async (productId, qty = 1) => {
       };
     }
 
-    const response = await fetch(`${BASE_URL}/cartpost`, {
+    const response = await fetch(`${apiUrl}/cartpost`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +72,7 @@ export const addToCart = async (productId, qty = 1) => {
 
 export const deleteCartItem = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}/delete/${id}`, {
+    const response = await fetch(`${apiUrl}/delete/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +90,7 @@ export const deleteCartItem = async (id) => {
 
 export const updateCartItem = async (id, qty) => {
   try {
-    const response = await fetch(`${BASE_URL}/update/${id}`, {
+    const response = await fetch(`${apiUrl}/update/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -108,7 +109,7 @@ export const updateCartItem = async (id, qty) => {
 
 export const checkout = async ({ cartItems, customer }) => {
   try {
-    const response = await fetch(`${BASE_URL}/checkout`, {
+    const response = await fetch(`${apiUrl}/checkout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
