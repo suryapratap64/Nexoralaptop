@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
-
   "scripts": {
-     "dev": "nodemon backend/index.js",
-  "start": "node backend/index.js",
-  "build": "npm install"
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "build": "npm install"
   },
   "keywords": [],
   "author": "",
