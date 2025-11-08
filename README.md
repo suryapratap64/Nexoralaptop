@@ -111,7 +111,7 @@ The frontend will connect automatically to the backend if both run locally.
 
 Default frontend:
 
-http://localhost:3000
+http://localhost:8000
 
 Sample .env File (Backend)
 PORT=5000
@@ -132,7 +132,7 @@ Testing the API
 You can test routes using Postman or Thunder Client.
 
 Example: Add product to cart
-POST http://localhost:5000/api/cart
+POST http://localhost:8000/api/cart
 Content-Type: application/json
 
 {
@@ -140,52 +140,3 @@ Content-Type: application/json
   "qty": 2
 }
 
-Example: Checkout
-POST http://localhost:5000/api/checkout
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john@example.com"
-}
-
-Demo
-
-To submit the project:
-
-Push code to GitHub with /backend and /frontend folders.
-
-Record a 1–2 minute demo video showing:
-
-Product listing
-
-Add/remove cart items
-
-Checkout and receipt view
-
-Upload to Loom or YouTube (unlisted) and include the link in your submission.
-
-Troubleshooting
-
-Error: PathError [TypeError]: Missing parameter name at index 1
-
-Replace app.get('*', handler) with app.all('/*', handler) in server.js.
-
-Images not loading
-
-Use verified URLs from m.media-amazon.com or host images locally.
-
-MongoDB connection error
-
-Ensure your .env file contains a valid MONGO_URI.
-
-License
-
-This project is created for educational and evaluation purposes only.
-© 2025 NexoraECO | Developed by Surya Pratap Singh
-
-
----
-
-Would you like me to modify this `README.md` to include **live demo commands** (like building frontend & serving through Express)?  
-That’s ideal if you plan to deploy it or run it as a single full-stack project.
